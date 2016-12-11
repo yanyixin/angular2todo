@@ -4,17 +4,26 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import {TodoComponent} from './todo/todo.component'
+import { AuthService } from './core/auth.service';
+import { RouterModule } from "@angular/router";
+import { routing } from "./app.routes";
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
-  providers: [],
+  providers: [{provide:'auth',useClass:AuthService}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

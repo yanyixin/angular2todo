@@ -1,0 +1,18 @@
+<div class="todo-wrapper">
+  <input class="addTodoInput" type="text" [(ngModel)]="content">
+  <button (click)="addTodo()">添加</button>
+  <div class="todoListWrapper">
+    <div class="todoList" *ngFor="let todo of todos; let index = index">
+      <input type="checkbox" (change)="reviseStatus(todo)" [checked] = "todo.completed">
+      <input class="todo-content"
+             [class.completed]="todo.completed"
+             [class.isEdit]="!todo.disabled"
+             type="text"
+             [(ngModel)]="todo.content"
+              disabled = "{{todo.disabled}}">
+      <button (click)="removeTodo(index)">删除</button>
+      <button (click)="modifyTodo(todo)">修改</button>
+      <button (click)="finishTodo(todo)">完成</button>
+    </div>
+  </div>
+</div>
